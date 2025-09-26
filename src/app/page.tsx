@@ -1,13 +1,23 @@
 "use client"
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { AboutSection, SplitSection } from "./components/sections/AboutSection";
 import HeroSection from "./components/sections/HeroSection";
 import Lenis from "lenis";
 import SocialMediaNav from "./components/sections/SocialNavbar";
 import Navbar from "./components/sections/Navbar";
+import { useScroll } from "motion/react";
 
 
 export default function Home() {
+ 
+  const container = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start start", "end end"]
+  });
+
+
+
   useEffect(() => {
     const lenis = new Lenis()
 
@@ -19,12 +29,12 @@ export default function Home() {
     requestAnimationFrame(raf)
   })
   return (
-    <div className="font-sans flex flex-col">
-      <main className="flex flex-col">
-        <HeroSection />
+      <main ref={container}  className="flex flex-col h-[200dvh] relative">
+        <HeroSection scrollYProgress={scrollYProgress} />
+        <AboutSection/>
         <SocialMediaNav />
         <Navbar />
       </main>
-    </div>
+
   );
 }

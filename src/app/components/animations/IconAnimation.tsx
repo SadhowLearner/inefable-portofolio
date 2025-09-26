@@ -1,13 +1,12 @@
 "use client";
 import { IconProps } from "@/app/types/icon.types";
-import { motion, TargetAndTransition, ValueTransition, Variant, Variants } from "framer-motion";
+import { motion, TargetAndTransition, ValueTransition,  Variants } from "framer-motion";
 
 export const iconAnimation: Variants = {
     hidden: { scale: 1, opacity: 0 },
     show: { scale: 1.1, opacity: 1, y: 0, transition: { type: "spring", stiffness: 200, damping: 9, mass: 1.5, ease: "easeIn", delay: 0.5 } },
-    hover: { scale: 1.3, rotate: 30, y: 16, transition: { type: "spring", stiffness: 300, damping: 10, mass: 1, ease: "easeIn" } }
+    hover: { scale: 1.3, rotate: 30, y: 4, transition: { type: "spring", stiffness: 300, damping: 10, mass: 1, ease: "easeIn" } }
 }
-
 
 
 const IconAnimations = ({ ...rest }: IconProps & TargetAndTransition & ValueTransition) => {
